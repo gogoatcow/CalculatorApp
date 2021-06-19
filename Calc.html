@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="Calc.css">
+        <title>Web Clac</title>
+    </head>
+    <body>
+    <h1>Web Calc</h1>
+    <p>計算用フォームに直接入力して計算することもできます. </p>
+    <div class="input-form">
+    <input><br>
+    <script>
+        function update(_v)
+        {
+            document.querySelector('input').value=_v
+        }
+        function append(_v)
+        {
+            document.querySelector('input').value +=_v
+        }
+        function calc()
+        {
+            const v = document.querySelector( 'input' ).value
+            try {
+                const f = new Function( 'return ' + v )
+                update( f().toString() )
+            } catch( _error ) {
+                update( _error )
+            }
+        }
+    </script>
+    <button onclick="append( '1' )" class="mathb">1</button>
+    <button onclick="append( '2' )" class="mathb">2</button>
+    <button onclick="append( '3' )" class="mathb">3</button>
+    <button onclick="append( '4' )" class="mathb">4</button>
+    <button onclick="append( '5' )" class="mathb">5</button><br>
+    <button onclick="append( '6' )" class="mathb">6</button>
+    <button onclick="append( '7' )" class="mathb">7</button>
+    <button onclick="append( '8' )" class="mathb">8</button>
+    <button onclick="append( '9' )" class="mathb">9</button>
+    <button onclick="append( '0' )" class="mathb">0</button><br>
+    <button onclick="append( '.' )" class="mathb">.</button>
+    <button onclick="append( '+' )" class="mathb">+</button>
+    <button onclick="append( '-' )" class="mathb">-</button>
+    <button onclick="append( '*' )" class="mathb">×</button>
+    <button onclick="append( '/' )" class="mathb">÷</button><br>
+    <button onclick="append( '**' )" class="mathb">^</button>
+    <button onclick="append( '**0.5' )" class="mathb">√</button> 
+
+    <button onclick="calc()" class="equalb">=</button>
+
+    <button onclick="document.querySelector( 'input' ).value = '' " class="mathb">CLR</button>
+    </div>
+    </body>
+</html>
